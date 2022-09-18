@@ -6,23 +6,36 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 public class BoardTest {
-    @Test
-    void testBoard() {
-        Square[][] square = {
-            { mock(Square.class)},
-            { mock(Square.class)},
-        };
-        Board board = new Board(square);
-        assertThat(board.invariant()).isEqualTo(true);
-    }
+
+    private Square[][] grid;
+    private Board board;
+
+    private final Square square = new BasicSquare();
 
     @Test
-    void testBoardNull() {
-        Square[][] square = {
-            { null},
-            { mock(Square.class)},
+    void isBoardValid (){
+        grid = new Square[][]{
+            { square,square}
         };
-        Board board = new Board(square);
-        assertThat(board.invariant()).isEqualTo(false);
+        board = new Board(grid);
+        assertThat(board.invariant()).isEqualTo(true);
+    }
+    @Test
+    void testSquareAt() {
+        grid = new Square[][]{
+            {square,null}
+        };
+        board = new Board(grid);
+        assertThat(board.squareAt(0, 0)).isEqualTo(square);
+
+    }
+    @Test
+    void testSquareAt2() {
+        grid = new Square[][]{
+            {square,square}
+        };
+        board = new Board(grid);
+        assertThat(board.squareAt(0, 0)).isEqualTo(square);
+
     }
 }

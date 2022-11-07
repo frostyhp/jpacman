@@ -23,7 +23,7 @@ public class BoardTest {
     @Test
     void isBoardValid (){
         grid = new Square[][]{
-            { square,square}
+            { square, square}
         };
         board = new Board(grid);
         assertThat(board.invariant()).isEqualTo(true);
@@ -34,10 +34,10 @@ public class BoardTest {
     @Test
     void testSquareAt() {
         grid = new Square[][]{
-            {square,null}
+            { square, null}
         };
         board = new Board(grid);
-        assertThat(board.squareAt(0, 0)).isEqualTo(square);
+        assertThat(board.squareAt( 0, 0)).isEqualTo(square);
 
     }
     /**
@@ -49,7 +49,7 @@ public class BoardTest {
             {square,square}
         };
         board = new Board(grid);
-        assertThat(board.squareAt(0, 0)).isEqualTo(square);
+        assertThat(board.squareAt( 0, 0)).isEqualTo(square);
 
     }
 }

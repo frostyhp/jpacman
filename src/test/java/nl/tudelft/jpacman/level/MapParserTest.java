@@ -46,9 +46,9 @@ public class MapParserTest {
         final int createGroundCount = 10;
         final int createWallCount = 26;
 
-        Mockito.verify(levelFactory,Mockito.times(1)).createGhost();
-        Mockito.verify(boardFactory,Mockito.times(createGroundCount)).createGround();
-
+        Mockito.verify(levelFactory, Mockito.times(1)).createGhost();
+        Mockito.verify(boardFactory, Mockito.times(createGroundCount)).createGround();
+        Mockito.verify(boardFactory, Mockito.times(createWallCount)).createWall();
     }
 
     /**
@@ -68,11 +68,11 @@ public class MapParserTest {
                 each row or contain invalid characters
                 */
                 map.add("############");
-                map.add("#P U      G#");
+                map.add("#P   B    G#");
                 map.add("############");
                 mapParser.parseMap(map);
             });
-        Assertions.assertEquals("Invalid character at 3,1: U", thrown.getMessage());
+        Assertions.assertEquals("Invalid character at 5,1: B", thrown.getMessage());
     }
 
 
